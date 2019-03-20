@@ -1,0 +1,19 @@
+{
+  "name": "bs-react-dropdown",
+  "sources": [
+    {
+      "dir" : "src",
+      "subdirs": true
+    },
+    {
+      "dir": "examples",
+      "subdirs": true,
+      "type": "dev"
+    }
+  ],
+  "suffix": ".bs.js",
+  "bsc-flags": [
+    "-bs-super-errors"
+  ],
+  "refmt": 3
+}

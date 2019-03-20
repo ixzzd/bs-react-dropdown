@@ -1,0 +1,31 @@
+{
+  "name": "bs-react-dropdown",
+  "version": "1.0.0",
+  "description": "BuckleScript binding to react-dropdown",
+  "main": "src/dropdown.bs.js",
+  "scripts": {
+    "build": "bsb -make-world",
+    "watch": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ixzzd/bs-react-dropdown.git"
+  },
+  "keywords": [
+    "reasonml",
+    "binding",
+    "react-dropdown",
+    "bucklescript"
+  ],
+  "author": "Egor Chemokhonenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ixzzd/bs-react-dropdown/issues"
+  },
+  "homepage": "https://github.com/ixzzd/bs-react-dropdown#readme",
+  "peerDependencies": {
+    "bs-platform": "^4.0.18",
+    "react-dropdown": "^1.6.4"
+  }
+}
