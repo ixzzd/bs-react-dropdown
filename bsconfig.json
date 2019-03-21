@@ -1,0 +1,6 @@
+{
+	"name": "bs-react-dropdown",
+	"sources": ["src"],
+	"bs-dependencies": ["reason-react"],
+	"refmt": 3
+}
