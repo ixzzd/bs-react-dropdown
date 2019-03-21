@@ -12,6 +12,7 @@ type outputOption = {
   label: string,
   value: string,
 };
+type inputOptions = array(inputOption);
 
 [@bs.obj]
 external makeProps:
@@ -34,7 +35,7 @@ external makeProps:
 
 let make =
     (
-      ~options,
+      ~options: inputOptions,
       ~className=?,
       ~placeholder=?,
       ~baseClassName=?,
