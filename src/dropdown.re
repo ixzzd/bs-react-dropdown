@@ -2,22 +2,17 @@
 external dropdown: ReasonReact.reactClass = "default";
 
 [@bs.deriving {jsConverter: newType}]
-type inputOption = {
+type dropdownOption = {
   label: string,
   value: string,
   className: option(string),
 };
-[@bs.deriving abstract]
-type outputOption = {
-  label: string,
-  value: string,
-};
-type inputOptions = array(inputOption);
+type dropdownOptions = array(dropdownOption);
 
 [@bs.obj]
 external makeProps:
   (
-    ~options: array(abs_inputOption),
+    ~options: array(abs_dropdownOption),
     ~className: string=?,
     ~placeholder: string=?,
     ~baseClassName: string=?,
@@ -26,16 +21,17 @@ external makeProps:
     ~menuClassName: string=?,
     ~arrowClassName: string=?,
     ~disabled: bool=?,
-    ~value: abs_inputOption=?,
+    ~value: option(string)=?,
     ~onFocus: bool => unit=?,
-    ~onChange: outputOption => unit=?
+    ~onChange: abs_dropdownOption => unit=?,
+    unit
   ) =>
   _ =
   "";
 
 let make =
     (
-      ~options: inputOptions,
+      ~options: dropdownOptions,
       ~className=?,
       ~placeholder=?,
       ~baseClassName=?,
@@ -53,7 +49,7 @@ let make =
     ~reactClass=dropdown,
     ~props=
       makeProps(
-        ~options=options |> Array.map(opt => inputOptionToJs(opt)),
+        ~options=options |> Array.map(opt => dropdownOptionToJs(opt)),
         ~className?,
         ~placeholder?,
         ~baseClassName?,
@@ -65,6 +61,7 @@ let make =
         ~value?,
         ~onFocus?,
         ~onChange?,
+        (),
       ),
     _children,
   );

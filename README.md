@@ -20,14 +20,28 @@ Add bs-react-dropdown to `bs-depenencies` in your `bsconfig.json`!
 }
 ```
 
-# Usage simple stateless component
+# Dropdown option type
+
+```re
+type dropdownOption = {
+  label: string,
+  value: string,
+  className: option(string),
+};
+```
+
+# Basic usage
+
 ```re
 open Dropdown;
+
 let component = ReasonReact.statelessComponent(__MODULE__);
-let options: inputOptions = [|
+
+let options: dropdownOptions = [|
   {label: "label1", value: "value1", className: Some("class1")},
   {label: "label2", value: "value2", className: Some("class2")},
 |];
+
 let make = _children => {
   ...component,
   render: self => {
@@ -36,40 +50,7 @@ let make = _children => {
 };
 ```
 
-# Usage reducer component
-```re
-open Dropdown;
+You have to use `dropdownOptionFromJs` generated function to work with `onChange` event.
 
-type state = {placeholder: string};
+Check reducer component [example](https://github.com/ixzzd/bs-react-dropdown/tree/master/examples/reducer_component.re)
 
-type action =
-  | UpdatePlaceholder(string);
-
-let component = ReasonReact.reducerComponent(__MODULE__);
-
-let options: inputOptions = [|
-  {label: "label1", value: "value1", className: Some("class1")},
-  {label: "label2", value: "value2", className: Some("class2")},
-|];
-
-let make = _children => {
-  ...component,
-  initialState: () => {placeholder: "i am placeholder"},
-  reducer: (action, _) =>
-    switch (action) {
-    | UpdatePlaceholder(placeholder) =>
-      ReasonReact.Update({placeholder: placeholder})
-    },
-  render: self => {
-    <Dropdown
-      options
-      placeholder={self.state.placeholder}
-      onChange={option => self.send(UpdatePlaceholder(valueGet(option)))}
-    />;
-  },
-};
-```
-
-# Helpers
-
-You have to use getters for receive attributes from option (`valueGet(option)` and `labelGet(option)`)
