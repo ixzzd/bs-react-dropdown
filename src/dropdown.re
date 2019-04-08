@@ -45,6 +45,11 @@ let make =
       ~onChange=?,
       _children,
     ) => {
+  let handleChange = value =>
+    switch (onChange) {
+    | Some(onChange) => onChange(dropdownOptionFromJs(value))
+    | None => ()
+    };
   ReasonReact.wrapJsForReason(
     ~reactClass=dropdown,
     ~props=
@@ -60,7 +65,7 @@ let make =
         ~disabled?,
         ~value?,
         ~onFocus?,
-        ~onChange?,
+        ~onChange=handleChange,
         (),
       ),
     _children,

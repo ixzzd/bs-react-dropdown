@@ -50,7 +50,5 @@ let make = _children => {
 };
 ```
 
-You have to use `dropdownOptionFromJs` generated function to work with `onChange` event.
-
 Check reducer component [example](https://github.com/ixzzd/bs-react-dropdown/tree/master/examples/reducer_component.re)
 

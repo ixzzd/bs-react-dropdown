@@ -24,8 +24,7 @@ let make = _children => {
       options
       value={self.state.value}
       onChange={outputOption => {
-        let value = dropdownOptionFromJs(outputOption).value;
-        self.send(UpdateValue(value));
+        self.send(UpdateValue(outputOption.value));
       }}
     />;
   },
